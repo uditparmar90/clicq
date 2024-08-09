@@ -1,0 +1,38 @@
+.navbar {
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: #343a40;
+}
+.nav-item.dropdown:hover .dropdownMenu {
+  display: block;
+  margin-top: 0;
+}
+.CateItem:hover {
+  color: orange;
+}
+
+.custom-search {
+  height: 30px;
+  display: flex !important;
+  align-items: center !important;
+  background: rgb(75, 75, 75);
+  border: 2px solid rgb(45, 45, 45);
+  color: whitesmoke;
+}
+
+.custom-search::placeholder {
+  color: lightgray;
+}
+
+.custom-search:hover {
+  border: 2px solid rgb(255, 255, 255);
+}
+
+.custom-search:focus {
+  border: 2px solid rgb(45, 45, 45) !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
+  outline: none;
+}

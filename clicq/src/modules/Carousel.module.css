@@ -1,0 +1,14 @@
+.customCarousel {
+  margin: 20px auto;
+  border-radius: 15px;
+  max-width: 900px;
+}
+
+.carouselInner {
+  border-radius: 15px;
+}
+
+.carousel-item img {
+  border-radius: 15px;
+  height: auto;
+}
