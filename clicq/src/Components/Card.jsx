@@ -8,7 +8,7 @@ const Card = () => {
         try {
             const resp = await fetch('https://fakestoreapi.com/products');
             const data = await resp.json();
-            console.log(data);
+            // console.log(data);
             setProductList(data);
         } catch (err) {
             console.log(err);

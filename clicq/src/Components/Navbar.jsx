@@ -53,12 +53,12 @@ const Navbar = () => {
                             Category
                         </a>
                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <a className={`${styles.CateItem} dropdown-item`} onMouseOver="this.style.color='orange'"
+                            <a className={`${styles.CateItem} dropdown-item`}
                                 href="#">Kids Fashion</a>
-                            <a className={`${styles.CateItem} dropdown-item`} onMouseOver="this.style.color='green'" href="#" >Mens Wear</a>
-                            <a className={`${styles.CateItem} dropdown-item`} onMouseOver="this.style.color='orange'" href="#">Womens Wear</a>
-                            <a className={`${styles.CateItem} dropdown-item`} onMouseOver="this.style.color='orange'" href="#">Gaming</a>
-                            <a className={`${styles.CateItem} dropdown-item`} onMouseOver="this.style.color='orange'" href="#">Gadgets</a>
+                            <a className={`${styles.CateItem} dropdown-item`} href="#" >Mens Wear</a>
+                            <a className={`${styles.CateItem} dropdown-item`} href="#">Womens Wear</a>
+                            <a className={`${styles.CateItem} dropdown-item`} href="#">Gaming</a>
+                            <a className={`${styles.CateItem} dropdown-item`} href="#">Gadgets</a>
                         </div>
                     </li>
 
