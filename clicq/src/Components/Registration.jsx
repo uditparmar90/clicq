@@ -43,7 +43,7 @@ const Registration = () => {
                             <label htmlFor="Email">Email</label>
                             <input
                                 type="email"
-                                className="email"
+                                className="form-control"
                                 id="email"
                                 value={number}
                                 onChange={(e) => setNumber(e.target.value)}
@@ -62,7 +62,7 @@ const Registration = () => {
                             />
                         </div>
                         <div className="form-group mb-3">
-                            <label htmlFor="cpass">confirm Password</label>
+                            <label htmlFor="cpass">Confirm password</label>
                             <input
                                 type="password"
                                 className="form-control"
