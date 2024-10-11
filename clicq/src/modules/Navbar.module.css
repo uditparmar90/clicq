@@ -36,3 +36,7 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5) !important;
   outline: none;
 }
+.nav-link.active {
+  color: #f0ad4e; /* Highlight color */
+  font-weight: bold;
+}
