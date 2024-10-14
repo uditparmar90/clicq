@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-const Card = () => {
+const Card = ({ handleProductBuy }) => {
     const [productList, setProductList] = useState([]);
     const [limit, setLimit] = useState(4);
     const [productLength, setProductLength] = useState(0);
@@ -63,19 +63,16 @@ const Card = () => {
                                     {product.description}
                                 </p>
                                 <p className="card-text font-weight-bold">${product.price}</p>
-                                <a href="#" className="btn btn-primary mt-auto" onClick={() => console.log(product.id)}>Buy Now</a>
+                                <a href="#" className="btn btn-primary mt-auto" onClick={() => handleProductBuy(product.id)}>Buy Now</a>
                             </div>
                         </div>
                     </div>
                 ))}
             </div>
-            {console.log(productLength)}
-            {console.log(limit)}
             {
                 productLength > limit && (
                     <div className="text-center" style={{
                         height: "50px",
-                        // objectFit: "contain"
                     }}>
                         <button className="btn btn-success" onClick={loadMoreHandle}>
                             Load more...

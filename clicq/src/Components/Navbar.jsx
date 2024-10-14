@@ -5,11 +5,11 @@ import logo from "../assets/images/logo.svg";
 import "../modules/Navbar.module.css";
 import styles from "../modules/Navbar.module.css";
 import { FiShoppingCart } from "react-icons/fi";
+import { } from "module";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation(); // Get current path
-
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
@@ -19,7 +19,6 @@ const Navbar = () => {
                 setScrolled(false);
             }
         };
-
         window.addEventListener("scroll", handleScroll);
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -59,11 +58,6 @@ const Navbar = () => {
                     <li className="nav-item">
                         <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
                             Home
-                        </Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/product_page" className={`nav-link ${location.pathname === '/product_page' ? 'active' : ''}`}>
-                            Product Page
                         </Link>
                     </li>
                     <li className="nav-item dropdown">
@@ -148,8 +142,11 @@ const Navbar = () => {
                     <button
                         className="btn btn-transparent"
                         style={{ color: "orange" }}
+                        title="Shopping Cart"
                     >
-                        <FiShoppingCart />
+                        <Link to='/Shpping_cart' className="{`nav-link ${location.pathname === '/Shpping_cart' ? 'active' : ''}`}">
+                            <FiShoppingCart />
+                        </Link>
                     </button>
                 </form>
             </div>

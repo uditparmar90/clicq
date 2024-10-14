@@ -1,10 +1,20 @@
 import Navbar from "./Navbar";
 import Carousel from "./Carousel";
 import Footer from "./Footer";
-import Registration from "./Registration";
-import React, { Suspense } from "react";
+// import Product_page from "./Product_page";
+// import Registration from "./Registration";
+import React, { Suspense, useState } from "react";
+import CardDetail from "./CardDetail";
 
 const Home = () => {
+    const [selectedProductId, setSelectedProductId] = useState(null);
+    selectedProductId ? console.log("hello" + selectedProductId) : console.log("Null")
+    const handleProductBuy = (productId) => {
+
+        console.log(`Product ${productId} is selected`);
+        setSelectedProductId(productId);
+    };
+
     const LazyLoadProduct = React.lazy(
         () =>
             new Promise((resolve) =>
@@ -14,8 +24,7 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            <Carousel />
-            <Suspense
+            {selectedProductId != null ? <CardDetail selectedProductId={selectedProductId} /> : <><Carousel /> <Suspense
                 fallback={
                     <div
                         className="container my-4"
@@ -33,9 +42,10 @@ const Home = () => {
                     </div>
                 }
             >
-                <LazyLoadProduct />
+                <LazyLoadProduct handleProductBuy={handleProductBuy} />
             </Suspense>
-            <Registration />
+            </>
+            }
             <Footer />
         </>
     )

@@ -1,31 +1,25 @@
 import "bootstrap/dist/css/bootstrap.css";
 import "./App.css";
-
-// import Card from "./Components/Card";
 import Home from "./Components/Home";
 import Product_page from "./Components/Product_page";
+import ShoppingCart from "./Components/ShoppingCart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Navbar from "./Components/Navbar";
-// const LazyLoadProduct = React.lazy(
-//     () =>
-//         new Promise((resolve) =>
-//             setTimeout(() => resolve(import("./Components/Card")), 2000)
-//         )
-// );
+import { Provider } from "react-import { connect } from react-redux";
+import store from './store';
 function App() {
 
     return (
         <>
-            <BrowserRouter>
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/product_page' element={<Product_page />} />
+            <Provider store={store}>
+                <BrowserRouter>
+                    <Routes>
+                        <Route path='/' element={<Home />} />
+                        <Route path='/product_page' element={<Product_page />} />
+                        <Route path='/Shpping_cart' element={<ShoppingCart />} />
 
-                </Routes>
-                <div>
-                    <Navbar />
-                </div>
-            </BrowserRouter>
+                    </Routes>
+                </BrowserRouter>
+            </Provider>
         </>
     );
 }

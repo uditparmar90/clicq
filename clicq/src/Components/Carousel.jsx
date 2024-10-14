@@ -19,10 +19,6 @@ const Carousel = () => {
         {
             id: 4,
             img: "https://assets.tatacliq.com/medias/sys_master/images/45581158940702.jpg",
-        },
-        {
-            id: 5,
-            img: "https://assets.tatacliq.com/medias/sys_master/images/45581159006238.jpg",
         }
     ];
 
