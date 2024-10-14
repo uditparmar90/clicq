@@ -3,8 +3,16 @@ import propTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
 import ShoppingCart from './ShoppingCart';
+import { decrement, increment } from '../redux/ShoppingCart/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const CardDetail = ({ selectedProductId }) => {
+    // ..............sample redux.............
+    const count = useSelector((state) => state.cart.value);
+    const dispatch = useDispatch();
+
+    // .....................................
+
     const [findProduct, setFindProduct] = useState(null);
 
     const getProduct = async () => {
@@ -56,54 +64,72 @@ const CardDetail = ({ selectedProductId }) => {
     console.log("total list of shopping cart : " + shoopingCartId);
 
     return (
-        <div className="container my-5">
-            {findProduct ? (
-                <div className="row">
-                    <div className="col-md-6 text-center mb-4">
-                        <img
-                            className="img-fluid"
-                            src={findProduct.image}
-                            alt={findProduct.title}
-                            style={{
-                                maxWidth: '400px',
-                                maxHeight: '400px',
-                                height: 'auto',
-                                borderRadius: '10px',
-                                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                            }}
-                        />
-                    </div>
-                    <div className="col-md-6">
-                        <h2 className="my-3">{findProduct.title}</h2>
-                        <p className="text-muted fw-bold fs-5">Category: {findProduct.category}</p>
-                        <p className="text-muted fw-bold fs-4 mb-2">${findProduct.price.toFixed(2)}</p>
-                        <div className="d-flex align-items-center">
-                            {renderStars(findProduct.rating.rate)}
-                            <span className="ms-2 text-muted">({findProduct.rating.count} reviews)</span>
+        <>
+            <div>
+                <button
+                    aria-label="Increment value"
+                    onClick={() => dispatch(increment())}
+                >
+                    Increment
+                </button>
+                <span>{count}</span>
+                <button
+                    aria-label="Decrement value"
+                    onClick={() => dispatch(decrement())}
+                >
+                    Decrement
+                </button>
+            </div>
+
+            <div className="container my-5">
+                {findProduct ? (
+                    <div className="row">
+                        <div className="col-md-6 text-center mb-4">
+                            <img
+                                className="img-fluid"
+                                src={findProduct.image}
+                                alt={findProduct.title}
+                                style={{
+                                    maxWidth: '400px',
+                                    maxHeight: '400px',
+                                    height: 'auto',
+                                    borderRadius: '10px',
+                                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                                }}
+                            />
                         </div>
-                        <p className="mt-3">{findProduct.description}</p>
-                        <div className="d-flex mt-4">
-                            <button className="btn btn-primary me-3 shadow-sm" onClick={() => handleShoppingCart(findProduct.id)}>
-                                Add to Cart
-                            </button>
-                            <button className="btn btn-outline-secondary me-3 shadow-sm">
-                                Add to Wishlist
-                            </button>
-                            <button className="btn btn-info shadow-sm">
-                                View Details
-                            </button>
+                        <div className="col-md-6">
+                            <h2 className="my-3">{findProduct.title}</h2>
+                            <p className="text-muted fw-bold fs-5">Category: {findProduct.category}</p>
+                            <p className="text-muted fw-bold fs-4 mb-2">${findProduct.price.toFixed(2)}</p>
+                            <div className="d-flex align-items-center">
+                                {renderStars(findProduct.rating.rate)}
+                                <span className="ms-2 text-muted">({findProduct.rating.count} reviews)</span>
+                            </div>
+                            <p className="mt-3">{findProduct.description}</p>
+                            <div className="d-flex mt-4">
+                                <button className="btn btn-primary me-3 shadow-sm" onClick={() => handleShoppingCart(findProduct.id)}>
+                                    Add to Cart
+                                </button>
+                                <button className="btn btn-outline-secondary me-3 shadow-sm">
+                                    Add to Wishlist
+                                </button>
+                                <button className="btn btn-info shadow-sm">
+                                    View Details
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ) : (
-                <div className="text-center py-5">
-                    <div className="spinner-border text-primary" role="status">
-                        <span className="visually-hidden">Loading...</span>
+                ) : (
+                    <div className="text-center py-5">
+                        <div className="spinner-border text-primary" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                        <p className="mt-3">Loading product details...</p>
                     </div>
-                    <p className="mt-3">Loading product details...</p>
-                </div>
-            )}
-        </div>
+                )}
+            </div>
+        </>
     );
 };
 

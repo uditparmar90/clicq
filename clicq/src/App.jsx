@@ -4,8 +4,8 @@ import Home from "./Components/Home";
 import Product_page from "./Components/Product_page";
 import ShoppingCart from "./Components/ShoppingCart";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Provider } from "react-import { connect } from react-redux";
-import store from './store';
+import { Provider } from "react-redux";
+import store from './redux/store';
 function App() {
 
     return (
