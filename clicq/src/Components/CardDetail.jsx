@@ -2,7 +2,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import propTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 import { FaStar, FaStarHalfAlt, FaRegStar } from 'react-icons/fa';
-import ShoppingCart from './ShoppingCart';
 import { decrement, increment } from '../redux/ShoppingCart/cartSlice';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -10,11 +9,9 @@ const CardDetail = ({ selectedProductId }) => {
     // ..............sample redux.............
     const count = useSelector((state) => state.cart.value);
     const dispatch = useDispatch();
-
     // .....................................
 
     const [findProduct, setFindProduct] = useState(null);
-
     const getProduct = async () => {
         try {
             const resp = await fetch(`https://fakestoreapi.com/products/${selectedProductId}`);
@@ -31,6 +28,7 @@ const CardDetail = ({ selectedProductId }) => {
         }
     }, [selectedProductId]);
 
+    // ...................Generating stars of product............................... 
     const renderStars = (rate) => {
         const fullStars = Math.floor(rate);
         const halfStar = rate % 1 !== 0;
