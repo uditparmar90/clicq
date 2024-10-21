@@ -3,22 +3,25 @@ import { createSlice } from "@reduxjs/toolkit";
 export const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    value: 0,
+    shoppingCartIds: [],
   },
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    addToCart: (state, action) => {
+      console.log("state" + state);
+      const id = action.payload;
+      console.log("Action" + id);
+      if (!state.shoppingCartIds.includes(id)) {
+        state.shoppingCartIds.push(id);
+        console.log("product added : ", id);
+      } else {
+        console.log("product already present in cart ");
+      }
+      console.log("updated state : " + state.shoppingCartIds);
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = cartSlice.actions;
+export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

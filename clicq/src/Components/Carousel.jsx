@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useEffect, useState } from 'react';
+import styles from '../modules/Carousel.module.css';  // Assuming you have a module for custom carousel styles
 
 const Carousel = () => {
     const carousel = [
@@ -31,13 +32,14 @@ const Carousel = () => {
     const prevSlide = () => {
         setActiveIndex((prevIndex) => (prevIndex - 1 + carousel.length) % carousel.length);
     };
+
     useEffect(() => {
-        const interval = setInterval(nextSlide, 3000);
-        return () => clearInterval(interval)
-    }, [])
+        const interval = setInterval(nextSlide, 4000);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        <div id="carouselExampleControls" className="carousel slide mb-2" data-ride="carousel">
+        <div id="carouselExampleControls" className={`carousel slide ${styles.customCarousel} mb-2`} data-ride="carousel">
             <div className="carousel-inner">
                 {carousel.map((item, index) => (
                     <div key={item.id} className={`carousel-item ${index === activeIndex ? 'active' : ''}`}>
@@ -46,15 +48,15 @@ const Carousel = () => {
                 ))}
             </div>
             <a className="carousel-control-prev" href="#carouselExampleControls" role="button" onClick={prevSlide}>
-                <FaChevronCircleLeft className="carousel-control-prev-icon" style={{ fontSize: '2rem' }} />
+                <FaChevronCircleLeft className="carousel-control-prev-icon" style={{ fontSize: '2rem', color: 'white' }} />
                 <span className="sr-only">Previous</span>
             </a>
             <a className="carousel-control-next" href="#carouselExampleControls" role="button" onClick={nextSlide}>
-                <FaChevronCircleRight className="carousel-control-next-icon" style={{ fontSize: '2rem' }} />
+                <FaChevronCircleRight className="carousel-control-next-icon" style={{ fontSize: '2rem', color: 'white' }} />
                 <span className="sr-only">Next</span>
             </a>
         </div>
     );
-}
+};
 
 export default Carousel;

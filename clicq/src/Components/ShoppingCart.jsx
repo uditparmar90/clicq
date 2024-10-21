@@ -1,7 +1,8 @@
-import React from 'react';
+import { useSelector } from "react-redux";
 
 const ShoppingCart = () => {
-    console.log("shoppingcart");
+    const shoppingCartIds = useSelector((state) => state.cart.shoppingCartIds);
+    console.log("Cart list : " + shoppingCartIds);
     return (
         <>
             <div className="card">

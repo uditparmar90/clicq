@@ -8,10 +8,8 @@ import CardDetail from "./CardDetail";
 
 const Home = () => {
     const [selectedProductId, setSelectedProductId] = useState(null);
-    selectedProductId ? console.log("hello" + selectedProductId) : console.log("Null")
+    selectedProductId ? console.log("selectedProductId " + selectedProductId) : console.log("Null");
     const handleProductBuy = (productId) => {
-
-        console.log(`Product ${productId} is selected`);
         setSelectedProductId(productId);
     };
 
@@ -24,7 +22,7 @@ const Home = () => {
     return (
         <>
             <Navbar />
-            {selectedProductId != null ? <CardDetail selectedProductId={selectedProductId} /> : <><Carousel /> <Suspense
+            {selectedProductId != null ? <CardDetail selectedProductId={selectedProductId} setSelectedProductId={setSelectedProductId} /> : <><Carousel /> <Suspense
                 fallback={
                     <div
                         className="container my-4"

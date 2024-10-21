@@ -5,11 +5,11 @@ import logo from "../assets/images/logo.svg";
 import "../modules/Navbar.module.css";
 import styles from "../modules/Navbar.module.css";
 import { FiShoppingCart } from "react-icons/fi";
-import { } from "module";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
     const location = useLocation(); // Get current path
+
     useEffect(() => {
         const handleScroll = () => {
             const offset = window.scrollY;
@@ -37,118 +37,150 @@ const Navbar = () => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                color: "black",
-                background: "rgb(51,51,51)",
-                height: "50px",
+                background: scrolled ? "rgb(51, 51, 51)" : "transparent",
+                transition: "background 0.3s ease",
             }}
         >
-            <a className="navbar-brand" href="#">
-                <img
-                    src={logo}
-                    alt="Logo"
-                    className="d-inline-block align-top"
-                    style={{ height: "40px", width: "100%" }}
-                />
-            </a>
-            <div
-                className="collapse navbar-collapse"
-                id="navbarSupportedContent"
-            >
-                <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li className="nav-item">
-                        <Link to="/" className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}>
-                            Home
-                        </Link>
-                    </li>
-                    <li className="nav-item dropdown">
-                        <a
-                            className="nav-link dropdown-toggle"
-                            href="#"
-                            id="navbarDropdownMenuLink"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                        >
-                            Category
-                        </a>
-                        <div
-                            className="dropdown-menu"
-                            aria-labelledby="navbarDropdownMenuLink"
-                        >
-                            <a
-                                className={`${styles.CateItem} dropdown-item`}
-                                href="#"
-                            >
-                                Kids Fashion
-                            </a>
-                            <a
-                                className={`${styles.CateItem} dropdown-item`}
-                                href="#"
-                            >
-                                Mens Wear
-                            </a>
-                            <a
-                                className={`${styles.CateItem} dropdown-item`}
-                                href="#"
-                            >
-                                Womens Wear
-                            </a>
-                            <a
-                                className={`${styles.CateItem} dropdown-item`}
-                                href="#"
-                            >
-                                Gaming
-                            </a>
-                            <a
-                                className={`${styles.CateItem} dropdown-item`}
-                                href="#"
-                            >
-                                Gadgets
-                            </a>
-                        </div>
-                    </li>
-                    <li className="nav-item">
-                        <Link to="/brands" className={`nav-link ${location.pathname === '/brands' ? 'active' : ''}`}>
-                            Brands
-                        </Link>
-                    </li>
-                </ul>
-                <form className="d-flex ms-auto">
-                    <input
-                        className={`${styles.customSearch} form-control me-2 p-auto m-auto`}
-                        type="search"
-                        placeholder="Search"
-                        aria-label="Search"
-                        style={{
-                            height: "30px",
-                            display: "flex!important",
-                            alignItems: "center!important",
-                            background: "rgb(75,75,75)",
-                            border: "2px solid rgb(45,45,45)",
-                            color: "whitesmoke",
-                        }}
+            <div className="container-fluid">
+                <Link className="navbar-brand" to="/">
+                    <img
+                        src={logo}
+                        alt="Logo"
+                        className="d-inline-block align-top"
+                        style={{ height: "40px" }}
                     />
-                    <button
-                        className="btn btn-outline-success p-0 mr-2 me-2"
-                        type="submit"
-                        style={{
-                            height: "30px",
-                            display: "flex!important",
-                            alignItems: "center!important",
-                        }}
-                    >
-                        Search
-                    </button>
-                    <button
-                        className="btn btn-transparent"
-                        style={{ color: "orange" }}
-                        title="Shopping Cart"
-                    >
-                        <Link to='/Shpping_cart' className="{`nav-link ${location.pathname === '/Shpping_cart' ? 'active' : ''}`}">
+                </Link>
+                <button
+                    className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                <div
+                    className="collapse navbar-collapse"
+                    id="navbarSupportedContent"
+                >
+                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li className="nav-item">
+                            <Link
+                                to="/"
+                                className={`nav-link ${location.pathname === "/" ? "active" : ""
+                                    }`}
+                            >
+                                Home
+                            </Link>
+                        </li>
+                        <li className="nav-item dropdown">
+                            <a
+                                className="nav-link dropdown-toggle"
+                                href="#"
+                                id="navbarDropdownMenuLink"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Category
+                            </a>
+                            <ul
+                                className="dropdown-menu"
+                                aria-labelledby="navbarDropdownMenuLink"
+                            >
+                                <li>
+                                    <a
+                                        className={`dropdown-item ${styles.CateItem}`}
+                                        href="#"
+                                    >
+                                        Kids Fashion
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`dropdown-item ${styles.CateItem}`}
+                                        href="#"
+                                    >
+                                        Mens Wear
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`dropdown-item ${styles.CateItem}`}
+                                        href="#"
+                                    >
+                                        Womens Wear
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`dropdown-item ${styles.CateItem}`}
+                                        href="#"
+                                    >
+                                        Gaming
+                                    </a>
+                                </li>
+                                <li>
+                                    <a
+                                        className={`dropdown-item ${styles.CateItem}`}
+                                        href="#"
+                                    >
+                                        Gadgets
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className="nav-item">
+                            <Link
+                                to="/brands"
+                                className={`nav-link ${location.pathname === "/brands"
+                                    ? "active"
+                                    : ""
+                                    }`}
+                            >
+                                Brands
+                            </Link>
+                        </li>
+                    </ul>
+
+                    {/* Right-side Search and Cart */}
+                    <div className="d-flex ms-auto align-items-center">
+                        <form className="d-flex">
+                            <input
+                                className={`${styles.customSearch} form-control me-2`}
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search"
+                                style={{
+                                    background: "rgb(75, 75, 75)",
+                                    border: "2px solid rgb(45, 45, 45)",
+                                    color: "whitesmoke",
+                                }}
+                            />
+                            <button
+                                className="btn btn-outline-success"
+                                type="submit"
+                                style={{
+                                    color: "whitesmoke",
+                                    backgroundColor: "rgb(45, 45, 45)",
+                                }}
+                            >
+                                Search
+                            </button>
+                        </form>
+                        <Link
+                            to="/shopping_cart"
+                            className="btn btn-transparent ms-2"
+                            style={{ color: "orange" }}
+                            title="Shopping Cart"
+                        >
                             <FiShoppingCart />
                         </Link>
-                    </button>
-                </form>
+                    </div>
+                </div>
             </div>
         </nav>
     );
