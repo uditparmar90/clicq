@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import logo from "../assets/images/logo.svg";
+import navbarLogo from "../assets/images/navbarLogo.svg";
 import "../modules/Navbar.module.css";
 import styles from "../modules/Navbar.module.css";
 import { FiShoppingCart } from "react-icons/fi";
@@ -44,8 +44,8 @@ const Navbar = () => {
             <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     <img
-                        src={logo}
-                        alt="Logo"
+                        src={navbarLogo}
+                        alt="Amazon logo"
                         className="d-inline-block align-top"
                         style={{ height: "40px" }}
                     />

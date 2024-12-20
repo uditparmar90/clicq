@@ -29,7 +29,9 @@ const Card = ({ handleProductBuy }) => {
     };
 
     return (
-        <div className="container my-4" style={{ background: "rgb(241,241,241)" }}>
+        <div className="container my-4" style={{
+            background: "rgb(241,241,241)", borderRadius: '3px'
+        }}>
             <div className="text-center mb-4">
                 <h1 className="display-4">Featured Products</h1>
                 <p className="lead">Up to 50% off</p>

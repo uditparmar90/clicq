@@ -1,8 +1,12 @@
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ShoppingCart = () => {
     const shoppingCartIds = useSelector((state) => state.cart.shoppingCartIds);
     console.log("Cart list : " + shoppingCartIds);
+    useEffect(() => { })
+
+
     return (
         <>
             <div className="card">
@@ -22,7 +26,7 @@ const ShoppingCart = () => {
                                     <div className="row">Cotton T-shirt</div>
                                 </div>
                                 <div className="col">
-                                    <a href="#">-</a><a href="#" className="border">1</a><a href="#">+</a>
+                                    <a href="#" >-</a><a href="#" className="border">1</a><a href="#">+</a>
                                 </div>
                                 <div className="col">&euro; 44.00 <span className="close">&#10005;</span></div>
                             </div>
@@ -53,7 +57,7 @@ const ShoppingCart = () => {
                                 <div className="col">&euro; 44.00 <span className="close">&#10005;</span></div>
                             </div>
                         </div>
-                        <div className="back-to-shop"><a href="#">&larr;</a><span className="text-muted">Back to shop</span></div>
+                        <div className="back-to-shop"><a href="/">&larr;</a><span className="text-muted">Back to shop</span></div>
                     </div>
                     <div className="col-md-4 summary">
                         <div><h5><b>Summary</b></h5></div>
