@@ -4,6 +4,7 @@
   left: 0;
   width: 100%;
   z-index: 100; /* Ensure navbar is above other elements */
+  position: absolute;
 
   /* background-color: transparent; */
   transition: background-color 0.3s ease;

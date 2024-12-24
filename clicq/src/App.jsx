@@ -1,5 +1,4 @@
 import "bootstrap/dist/css/bootstrap.css";
-import "./App.css";
 import Home from "./Components/Home";
 import Product_page from "./Components/Product_page";
 import ShoppingCart from "./Components/ShoppingCart";

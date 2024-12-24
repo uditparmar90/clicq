@@ -14,6 +14,7 @@ const CardDetail = ({ selectedProductId, setSelectedProductId }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [relatedProducts, setRelatedProducts] = useState([]);
+    const [isaddToCart, setIsAddedCart] = useState(false);
 
     useEffect(() => {
         const fetchProduct = async () => {
@@ -112,12 +113,12 @@ const CardDetail = ({ selectedProductId, setSelectedProductId }) => {
                         <div className="d-flex mt-4">
                             <button
                                 className="btn btn-primary me-3 shadow-sm"
-                                onClick={() => dispatch(addToCart(findProduct.id))}
+                                onClick={() => {
+                                    dispatch(addToCart(findProduct.id));
+                                    (isaddToCart ? setIsAddedCart(false) : setIsAddedCart(true));
+                                }}
                             >
-                                Add to Cart
-                            </button>
-                            <button className="btn btn-outline-secondary me-3 shadow-sm">
-                                Add to Wishlist
+                                {isaddToCart ? 'Remove cart' : 'Add to Cart'}
                             </button>
                             <button className="btn btn-info shadow-sm" onClick={fetchRelatedProducts}>
                                 Show Similar Products
@@ -129,45 +130,48 @@ const CardDetail = ({ selectedProductId, setSelectedProductId }) => {
                 <div className="text-center py-5">
                     <p>Product not found</p>
                 </div>
-            )}
+            )
+            }
 
             {/* Similar Products */}
-            {relatedProducts.length > 0 && (
-                <div className="container my-4" style={{ background: "rgb(241,241,241)" }}>
-                    <div className="text-center mb-4">
-                        <h1 className="display-8">Similar Products</h1>
-                    </div>
-                    <div className="row">
-                        {relatedProducts.map((product) => (
-                            <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
-                                <div className="card h-100">
-                                    <img
-                                        className="card-img-top"
-                                        src={product.image}
-                                        alt={product.title}
-                                        style={{
-                                            height: "200px",
-                                            objectFit: "contain",
-                                        }}
-                                    />
-                                    <div className="card-body d-flex flex-column">
-                                        <h5 className="card-title">{product.title}</h5>
-                                        <p className="card-text text-truncate">{product.description}</p>
-                                        <p className="card-text font-weight-bold">${product.price}</p>
-                                        <button
-                                            className="btn btn-primary mt-auto"
-                                            onClick={() => selectSimilarProduct(product.id)}
-                                        >
-                                            Buy Now
-                                        </button>
+            {
+                relatedProducts.length > 0 && (
+                    <div className="container my-4" style={{ background: "rgb(241,241,241)" }}>
+                        <div className="text-center mb-4">
+                            <h1 className="display-8">Similar Products</h1>
+                        </div>
+                        <div className="row">
+                            {relatedProducts.map((product) => (
+                                <div key={product.id} className="col-lg-3 col-md-4 col-sm-6 mb-4">
+                                    <div className="card h-100">
+                                        <img
+                                            className="card-img-top"
+                                            src={product.image}
+                                            alt={product.title}
+                                            style={{
+                                                height: "200px",
+                                                objectFit: "contain",
+                                            }}
+                                        />
+                                        <div className="card-body d-flex flex-column">
+                                            <h5 className="card-title">{product.title}</h5>
+                                            <p className="card-text text-truncate">{product.description}</p>
+                                            <p className="card-text font-weight-bold">${product.price}</p>
+                                            <button
+                                                className="btn btn-primary mt-auto"
+                                                onClick={() => selectSimilarProduct(product.id)}
+                                            >
+                                                Buy Now
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        ))}
+                            ))}
+                        </div>
                     </div>
-                </div>
-            )}
-        </div>
+                )
+            }
+        </div >
     );
 };
 

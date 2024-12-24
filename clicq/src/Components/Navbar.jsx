@@ -27,7 +27,9 @@ const Navbar = () => {
 
     let navbarClasses = ["navbar", "navbar-expand-lg", "navbar-dark"];
     if (scrolled) {
-        navbarClasses.push("scrolled");
+        navbarClasses.push("scrolled shadow-sm");
+    } else {
+        navbarClasses.push('');
     }
 
     return (
@@ -37,11 +39,10 @@ const Navbar = () => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                background: scrolled ? "rgb(51, 51, 51)" : "transparent",
-                transition: "background 0.3s ease",
+                padding: '0px'
             }}
         >
-            <div className="container-fluid">
+            <div className="container-fluid" style={{ position: 'absolute', marginTop: '47px', transition: "background 0.3s ease", background: scrolled ? "rgb(51, 51, 51)" : "transparent", }}>
                 <Link className="navbar-brand" to="/">
                     <img
                         src={navbarLogo}
@@ -78,13 +79,12 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item dropdown">
                             <a
-                                className="nav-link dropdown-toggle"
+                                className="nav-link dropdown-toggle "
                                 href="#"
                                 id="navbarDropdownMenuLink"
                                 role="button"
                                 data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
+                                aria-expanded="false">
                                 Category
                             </a>
                             <ul
@@ -157,7 +157,7 @@ const Navbar = () => {
                                 style={{
                                     background: "rgb(75, 75, 75)",
                                     border: "2px solid rgb(45, 45, 45)",
-                                    color: "whitesmoke",
+                                    color: "whitesmoke"
                                 }}
                             />
                             <button

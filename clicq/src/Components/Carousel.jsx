@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaChevronCircleRight, FaChevronCircleLeft } from "react-icons/fa";
 import { useEffect, useState } from 'react';
-import styles from '../modules/Carousel.module.css';  // Assuming you have a module for custom carousel styles
+import styles from '../modules/Carousel.module.css';
 
 const Carousel = () => {
     const carousel = [
@@ -19,8 +19,8 @@ const Carousel = () => {
         },
         {
             id: 4,
-            img: "https://assets.tatacliq.com/medias/sys_master/images/45581158940702.jpg",
-        }
+            img: "https://assets.tatacliq.com/medias/sys_master/images/45581158809630.jpg",
+        },
     ];
 
     const [activeIndex, setActiveIndex] = useState(0);
@@ -39,7 +39,7 @@ const Carousel = () => {
     }, []);
 
     return (
-        <div id="carouselExampleControls" className={`carousel slide ${styles.customCarousel} mb-2`} data-ride="carousel">
+        <div className={`carousel slide ${styles.customCarousel} mb-2`} data-ride="carousel">
             <div className="carousel-inner">
                 {carousel.map((item, index) => (
                     <div key={item.id} className={`carousel-item ${index === activeIndex ? 'active' : ''}`}>
@@ -47,14 +47,12 @@ const Carousel = () => {
                     </div>
                 ))}
             </div>
-            <a className="carousel-control-prev" href="#carouselExampleControls" role="button" onClick={prevSlide}>
+            <button className="carousel-control-prev" onClick={prevSlide} aria-label="Previous">
                 <FaChevronCircleLeft className="carousel-control-prev-icon" style={{ fontSize: '2rem', color: 'white' }} />
-                <span className="sr-only">Previous</span>
-            </a>
-            <a className="carousel-control-next" href="#carouselExampleControls" role="button" onClick={nextSlide}>
+            </button>
+            <button className="carousel-control-next" onClick={nextSlide} aria-label="Next">
                 <FaChevronCircleRight className="carousel-control-next-icon" style={{ fontSize: '2rem', color: 'white' }} />
-                <span className="sr-only">Next</span>
-            </a>
+            </button>
         </div>
     );
 };
