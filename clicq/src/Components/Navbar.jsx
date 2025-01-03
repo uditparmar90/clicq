@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import navbarLogo from "../assets/images/navbarLogo.svg";
-import "../modules/Navbar.module.css";
 import styles from "../modules/Navbar.module.css";
 import { FiShoppingCart } from "react-icons/fi";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
-    const location = useLocation(); // Get current path
+    const location = useLocation();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -29,7 +28,7 @@ const Navbar = () => {
     if (scrolled) {
         navbarClasses.push("scrolled shadow-sm");
     } else {
-        navbarClasses.push('');
+        navbarClasses.push("shadow-sm");
     }
 
     return (
@@ -39,14 +38,13 @@ const Navbar = () => {
                 position: "sticky",
                 top: 0,
                 zIndex: 1000,
-                padding: '0px'
             }}
         >
-            <div className="container-fluid" style={{ position: 'absolute', marginTop: '47px', transition: "background 0.3s ease", background: scrolled ? "rgb(51, 51, 51)" : "transparent", }}>
+            <div className="container-fluid">
                 <Link className="navbar-brand" to="/">
                     <img
                         src={navbarLogo}
-                        alt="Amazon logo"
+                        alt="Logo"
                         className="d-inline-block align-top"
                         style={{ height: "40px" }}
                     />
@@ -79,12 +77,13 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item dropdown">
                             <a
-                                className="nav-link dropdown-toggle "
+                                className="nav-link dropdown-toggle"
                                 href="#"
                                 id="navbarDropdownMenuLink"
                                 role="button"
                                 data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                                aria-expanded="false"
+                            >
                                 Category
                             </a>
                             <ul
@@ -92,42 +91,27 @@ const Navbar = () => {
                                 aria-labelledby="navbarDropdownMenuLink"
                             >
                                 <li>
-                                    <a
-                                        className={`dropdown-item ${styles.CateItem}`}
-                                        href="#"
-                                    >
+                                    <a className="dropdown-item" href="#">
                                         Kids Fashion
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        className={`dropdown-item ${styles.CateItem}`}
-                                        href="#"
-                                    >
+                                    <a className="dropdown-item" href="#">
                                         Mens Wear
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        className={`dropdown-item ${styles.CateItem}`}
-                                        href="#"
-                                    >
+                                    <a className="dropdown-item" href="#">
                                         Womens Wear
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        className={`dropdown-item ${styles.CateItem}`}
-                                        href="#"
-                                    >
+                                    <a className="dropdown-item" href="#">
                                         Gaming
                                     </a>
                                 </li>
                                 <li>
-                                    <a
-                                        className={`dropdown-item ${styles.CateItem}`}
-                                        href="#"
-                                    >
+                                    <a className="dropdown-item" href="#">
                                         Gadgets
                                     </a>
                                 </li>
@@ -136,9 +120,7 @@ const Navbar = () => {
                         <li className="nav-item">
                             <Link
                                 to="/brands"
-                                className={`nav-link ${location.pathname === "/brands"
-                                    ? "active"
-                                    : ""
+                                className={`nav-link ${location.pathname === "/brands" ? "active" : ""
                                     }`}
                             >
                                 Brands
@@ -154,19 +136,10 @@ const Navbar = () => {
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search"
-                                style={{
-                                    background: "rgb(75, 75, 75)",
-                                    border: "2px solid rgb(45, 45, 45)",
-                                    color: "whitesmoke"
-                                }}
                             />
                             <button
                                 className="btn btn-outline-success"
                                 type="submit"
-                                style={{
-                                    color: "whitesmoke",
-                                    backgroundColor: "rgb(45, 45, 45)",
-                                }}
                             >
                                 Search
                             </button>
@@ -174,7 +147,6 @@ const Navbar = () => {
                         <Link
                             to="/shopping_cart"
                             className="btn btn-transparent ms-2"
-                            style={{ color: "orange" }}
                             title="Shopping Cart"
                         >
                             <FiShoppingCart />
