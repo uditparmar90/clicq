@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView,RetrieveUpdateDestroyAPIView
+from rest_framework import generics
 
 from .models import UserDetail,Product,Brand,Category
 from .serializers import UserDetailsSerializers,BrandSerializers,CategorySerializers,ProductSerializers
@@ -8,10 +9,13 @@ class RegUsersList(ListAPIView):
     queryset=UserDetail.objects.all()
     serializer_class=UserDetailsSerializers
 
-class ProductsListCreateApliView(ListAPIView):
+
+
+class ProductsRetriveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset=Product.objects.all()
     serializer_class=ProductSerializers
-class ProductsRetriveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
+
+class Product_Graphical_UI(generics.ListCreateAPIView):
     queryset=Product.objects.all()
     serializer_class=ProductSerializers
 

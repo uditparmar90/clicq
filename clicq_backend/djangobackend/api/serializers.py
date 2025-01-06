@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import serializers,generics
 from .models import UserDetail,Product,Brand,Category
 
 class UserDetailsSerializers(serializers.ModelSerializer):
@@ -20,4 +20,6 @@ class ProductSerializers(serializers.ModelSerializer):
     class Meta:
         model=Product
         fields=('__all__')
+
+
 
