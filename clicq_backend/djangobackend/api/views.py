@@ -15,7 +15,7 @@ class ProductsRetriveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset=Product.objects.all()
     serializer_class=ProductSerializers
 
-class Product_Graphical_UI(generics.ListCreateAPIView):
+class Product_Graphical_UI(ListAPIView):
     queryset=Product.objects.all()
     serializer_class=ProductSerializers
 
