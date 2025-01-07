@@ -3,32 +3,47 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import Card from "./Card";
 
 const BrandsPage = () => {
     const [brands, setBrands] = useState([]);
     const [selectedBrand, setSelectedBrand] = useState(null);
+    const [selectProduct, setSelectedProduct] = useState([]);
     const handleSelectChange = (e) => {
         const brandId = e.target.value;
         const brand = brands.find((b) => b.id.toString() === brandId);
         setSelectedBrand(brand || null);
-        console.log(brandId, brand);
     };
     useEffect(() => {
-        axios
-            .get("http://127.0.0.1:8000/api/Product/1", {
-                params: { filter: '[["id","=",1]]' },
-            })
-            .then((response) => {
-                console.log(response.data);
-            });
-    });
+        if (selectedBrand) {
+            console.log(selectedBrand.id);
+            axios
+                .get(
+                    `http://127.0.0.1:8000/api/Product/${selectedBrand.id}`
+                    // {
+                    //     params: {
+                    //         filter: `[["brand","=",${selectedBrand.id}]]`,
+                    //     },
+                    // }
+                )
+                .then((response) => {
+                    setSelectedProduct(response.data);
+                    console.log(response.data);
+                })
+                .catch((error) => {
+                    console.error(
+                        "Error fetching products for the selected brand: ",
+                        error
+                    );
+                });
+        }
+    }, [selectedBrand]);
 
     useEffect(() => {
         axios
             .get("http://127.0.0.1:8000/api/brands/")
             .then((response) => {
                 setBrands(response.data);
-                console.log(response.data);
             })
             .catch((error) => {
                 console.error("Error fetching brands:", error);
@@ -60,14 +75,7 @@ const BrandsPage = () => {
                         ))}
                     </select>
                 </div>
-                {selectedBrand && (
-                    <div className="mt-4">
-                        <h3>Selected Brand Details</h3>
-                        <p>
-                            <strong>Brand Name:</strong> {selectedBrand.brand}
-                        </p>
-                    </div>
-                )}
+                {/* {selectedBrand && <Card />} */}
             </div>
             <Footer />
         </>
