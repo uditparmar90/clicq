@@ -20,15 +20,17 @@ const Product_page = () => {
                             <h1 className="display-4">Featured Products</h1>
                             <p className="lead">Up to 50% off</p>
                             <b className="lead fw-bold">
-                                <div className="spinner-border text-secondary" role="status">
+                                <div
+                                    className="spinner-border text-secondary"
+                                    role="status"
+                                >
                                     <span className="sr-only">Loading...</span>
                                 </div>
                             </b>
                         </div>
                     </div>
                 }
-            >
-            </Suspense>
+            ></Suspense>
 
             <CardDetail />
             <Registration />

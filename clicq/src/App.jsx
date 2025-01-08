@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import BrandsPage from "./Components/BrandsPage";
+import Registration from "./Components/Registration";
+import Login from "./Components/Login";
 
 function App() {
     return (
@@ -23,6 +25,11 @@ function App() {
                             path="/shopping_cart"
                             element={<ShoppingCart />}
                         />
+                        <Route
+                            path="/user_registation"
+                            element={<Registration />}
+                        />
+                        <Route path="/user_login" element={<Login />} />
                         <Route path="/brands" element={<BrandsPage />} />
                     </Routes>
                 </BrowserRouter>

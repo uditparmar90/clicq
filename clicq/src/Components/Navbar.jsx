@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useLocation, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
-import navbarLogo from "../assets/images/navbarLogo.svg";
+import navbarLogo from "../assets/images/image.png";
 import styles from "../modules/Navbar.module.css";
 import { FiShoppingCart } from "react-icons/fi";
+import { FaSearch, FaUser } from "react-icons/fa";
 
 const Navbar = () => {
     const [scrolled, setScrolled] = useState(false);
@@ -35,9 +36,11 @@ const Navbar = () => {
         <nav
             className={navbarClasses.join(" ")}
             style={{
-                position: "sticky",
+                // position: "sticky",
                 top: 0,
                 zIndex: 1000,
+                backgroundColor: "rgb(19,25,33)",
+                height: "58px",
             }}
         >
             <div className="container-fluid">
@@ -58,12 +61,19 @@ const Navbar = () => {
                     aria-expanded="false"
                     aria-label="Toggle navigation"
                 >
-                    <span className="navbar-toggler-icon"></span>
+                    <span
+                        className="navbar-toggler-icon"
+                        style={{ backgroundColor: "rgb(19,25,33)" }}
+                    ></span>
                 </button>
 
                 <div
                     className="collapse navbar-collapse"
                     id="navbarSupportedContent"
+                    style={{
+                        backgroundColor: "rgb(19,25,33)",
+                        height: "40px", // Added background color
+                    }}
                 >
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
@@ -136,16 +146,20 @@ const Navbar = () => {
                     <div className="d-flex ms-auto align-items-center">
                         <form className="d-flex">
                             <input
-                                className={`${styles.customSearch} form-control me-2`}
+                                className={`${styles.customSearch} form-control me-2 `}
                                 type="search"
                                 placeholder="Search"
                                 aria-label="Search"
                             />
                             <button
-                                className="btn btn-outline-success"
+                                className="btn "
                                 type="submit"
+                                style={{
+                                    backgroundColor: "rgb(243,168,71)",
+                                    color: " rgb(53,52,52)",
+                                }}
                             >
-                                Search
+                                <FaSearch />
                             </button>
                         </form>
                         <Link
@@ -153,7 +167,24 @@ const Navbar = () => {
                             className="btn btn-transparent ms-2"
                             title="Shopping Cart"
                         >
-                            <FiShoppingCart />
+                            <FiShoppingCart style={{ color: "orange" }} />
+                            <h6 style={{ color: "whitesmoke" }}>Cart</h6>
+                        </Link>
+                        <Link
+                            to="/user_registation"
+                            className="btn btn-transparent ms-2"
+                            title="Shopping Cart"
+                        >
+                            <FaUser style={{ color: "whitesmoke" }} />
+                            <h6 style={{ color: "whitesmoke" }}>User</h6>
+                        </Link>
+                        <Link
+                            to="/user_login"
+                            className="btn btn-transparent ms-2"
+                            title="Shopping Cart"
+                        >
+                            <FaUser style={{ color: "whitesmoke" }} />
+                            <h6 style={{ color: "whitesmoke" }}>User</h6>
                         </Link>
                     </div>
                 </div>
