@@ -28,6 +28,7 @@ class ProductsRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
             # Fetch filtered queryset
             products = self.get_queryset()
             serializer = self.get_serializer(products, many=True)
+            print(serializer.data)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Brand.DoesNotExist:
             return Response({"error": "Brand not found"}, status=status.HTTP_404_NOT_FOUND)
